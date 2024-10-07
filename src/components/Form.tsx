@@ -1,11 +1,11 @@
 import { useState, KeyboardEvent } from 'react'
-import "./todo-form.scss"
+import '../styles/Form.scss'
 
-interface TodoFormProps {
+interface FormProps {
   onAddTask: (task: string) => void
 }
 
-export const TodoForm = ({ onAddTask }: TodoFormProps) => {
+export const Form = ({ onAddTask }: FormProps) => {
   const [task, setTask] = useState<string | undefined>()
 
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>): void => {
@@ -15,7 +15,7 @@ export const TodoForm = ({ onAddTask }: TodoFormProps) => {
   };
 
   return (
-    <div className="todo-form">
+    <div className={'todo-form'}>
       <input
         placeholder={'Enter new task'}
         value={task}

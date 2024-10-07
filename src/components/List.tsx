@@ -1,14 +1,15 @@
-import { KeyboardEvent } from "react";
-import { Task } from "../../app";
-import { Checkbox } from "../checkbox";
-import "./todo-list.scss";
+import { KeyboardEvent } from 'react'
 
-interface TodoListTasks {
+import { Task } from '../app'
+import { Checkbox } from './Checkbox'
+import '../styles/List.scss'
+
+interface ListTasksProps {
   tasks: Task[]
   onUpdateTasks: (tasks: Task[]) => void
 }
 
-export const TodoList = ({ tasks, onUpdateTasks }: TodoListTasks) => {
+export const List = ({ tasks, onUpdateTasks }: ListTasksProps) => {
   const handleDelete = (id: number) => {
     const currentTasks = tasks.filter(tasks => tasks.id !== id)
     onUpdateTasks(currentTasks)
@@ -34,10 +35,10 @@ export const TodoList = ({ tasks, onUpdateTasks }: TodoListTasks) => {
   };
 
   return (
-    <div className="todo-list">
-      <span className="todo-list-title">Things to do:</span>
+    <div className={'todo-list'}>
+      <span className={'todo-list-title'}>Things to do:</span>
       {tasks.length ? (
-        <div className="todo-list-content">
+        <div className={'todo-list-content'}>
           {tasks.map((taskItem) => (
             <Checkbox
               key={taskItem.id}
@@ -52,7 +53,7 @@ export const TodoList = ({ tasks, onUpdateTasks }: TodoListTasks) => {
           ))}
         </div>
       ) : (
-        <div className="no-todos">
+        <div className={'no-todos'}>
           Looks like you&apos;re absolutely free today!
         </div>
       )}

@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { TodoForm } from "./components/todo-form/todo-form";
-import { TodoList } from "./components/todo-list";
-import { TodoResults } from "./components/todo-results";
-import { TasksContext } from "./todo-context";
-import "./index.scss";
+import { useState, useEffect } from 'react'
+
+import { Form } from './components/Form'
+import { List } from './components/List'
+import { Results } from './components/Results'
+import './styles/Index.scss'
 
 export interface Task {
   id: number;
@@ -44,7 +44,7 @@ const tasksExample: Task[] = [
   },
 ];
 
-export const App = (): JSX.Element => {
+export const App = () => {
   const [tasks, setTasks] = useState(tasksExample);
   const [totalTasks, setTotalTasks] = useState(0)
 
@@ -69,11 +69,9 @@ export const App = (): JSX.Element => {
 
   return (
     <div className={'root'}>
-      <TasksContext.Provider value={{ tasksExample }}>
-        <TodoList tasks={tasks} onUpdateTasks={handleUpdateTasks} />
-        <TodoResults totalTaskChecked={totalTasks}/>
-        <TodoForm onAddTask={handleOnAddTask} />
-      </TasksContext.Provider>
+        <List tasks={tasks} onUpdateTasks={handleUpdateTasks} />
+        <Results totalTaskChecked={totalTasks}/>
+        <Form onAddTask={handleOnAddTask} />
     </div>
   )
 }

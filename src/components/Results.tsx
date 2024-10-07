@@ -1,10 +1,10 @@
-import "./todo-results.scss"
+import '../styles/Results.scss'
 
-interface TodoResults {
+interface ResultsProps {
   totalTaskChecked: number
 }
 
-export const TodoResults = ({ totalTaskChecked }: TodoResults) => {
+export const Results = ({ totalTaskChecked }: ResultsProps) => {
 
   return (
     <div className="todo-results">

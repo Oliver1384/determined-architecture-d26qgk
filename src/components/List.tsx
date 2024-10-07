@@ -6,7 +6,6 @@ import '../styles/List.scss'
 
 interface ListTasksProps {
   tasks: Task[]
-  
   onUpdateTasks: (tasks: Task[]) => void
 }
 

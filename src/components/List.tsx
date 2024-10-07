@@ -10,12 +10,12 @@ interface ListTasksProps {
 }
 
 export const List = ({ tasks, onUpdateTasks }: ListTasksProps) => {
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     const currentTasks = tasks.filter(tasks => tasks.id !== id)
     onUpdateTasks(currentTasks)
   };
 
-  const toggleCheck = (id: number) => {
+  const toggleCheck = (id: string) => {
     const currentTasks = tasks.map((task) => {
       if (task.id === id) {
         return {
@@ -28,7 +28,7 @@ export const List = ({ tasks, onUpdateTasks }: ListTasksProps) => {
     onUpdateTasks(currentTasks)
   };
 
-  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>, id: number) => {
+  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>, id: string) => {
     if (e.keyCode === 13) {
       toggleCheck(id);
     }

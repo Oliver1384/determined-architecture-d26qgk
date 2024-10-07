@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { Form } from './components/Form'
 import { List } from './components/List'
@@ -6,39 +7,39 @@ import { Results } from './components/Results'
 import './styles/Index.scss'
 
 export interface Task {
-  id: number;
+  id: string;
   label: string;
   checked: boolean;
 }
 
 const tasksExample: Task[] = [
   {
-    id: 0,
+    id: uuidv4(),
     label: "Fix an ability to display all tasks",
     checked: false,
   },
   {
-    id: 1,
+    id: uuidv4(),
     label: "Fix a layout, checkboxes should be listed in a column",
     checked: false,
   },
   {
-    id: 2,
+    id: uuidv4(),
     label: "Fix an ability to add a new task",
     checked: false,
   },
   {
-    id: 3,
+    id: uuidv4(),
     label: "Fix an ability to toggle a task",
     checked: false,
   },
   {
-    id: 4,
+    id: uuidv4(),
     label: "Fix an ability to delete a task",
     checked: false,
   },
   {
-    id: 5,
+    id: uuidv4(),
     label: "Fix an ability to count completed tasks",
     checked: false,
   },
@@ -55,7 +56,7 @@ export const App = () => {
   const handleOnAddTask = (task: string): void => {
     setTasks((prevState: Task[]) => {
       const newTask = {
-        id: prevState.length,
+        id: uuidv4(),
         label: task,
         checked: false
       }

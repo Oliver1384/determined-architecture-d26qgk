@@ -7,7 +7,7 @@ interface ResultsProps {
 export const Results = ({ totalTaskChecked }: ResultsProps) => {
 
   return (
-    <div className="todo-results">
+    <div className={'todo-results'}>
       {`Done: ${totalTaskChecked}`}
     </div>
   )

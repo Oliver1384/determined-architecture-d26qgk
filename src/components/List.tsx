@@ -6,6 +6,7 @@ import '../styles/List.scss'
 
 interface ListTasksProps {
   tasks: Task[]
+  
   onUpdateTasks: (tasks: Task[]) => void
 }
 
@@ -29,7 +30,7 @@ export const List = ({ tasks, onUpdateTasks }: ListTasksProps) => {
   };
 
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>, id: string) => {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       toggleCheck(id);
     }
   };

@@ -47,11 +47,11 @@ const tasksExample: Task[] = [
 
 export const App = () => {
   const [tasks, setTasks] = useState(tasksExample);
-  const [totalTasks, setTotalTasks] = useState(0)
+  const [totalTasksDone, setTotalTasksDone] = useState(0)
 
   useEffect(() => {
-    setTotalTasks(tasks.filter(tasks => tasks.checked).length)
-  }, [tasks, setTotalTasks])
+    setTotalTasksDone(tasks.filter(tasks => tasks.checked).length)
+  }, [tasks, setTotalTasksDone])
 
   const handleOnAddTask = (task: string): void => {
     setTasks((prevState: Task[]) => {
@@ -71,7 +71,7 @@ export const App = () => {
   return (
     <div className={'root'}>
         <List tasks={tasks} onUpdateTasks={handleUpdateTasks} />
-        <Results totalTaskChecked={totalTasks}/>
+        <Results totalTaskChecked={totalTasksDone}/>
         <Form onAddTask={handleOnAddTask} />
     </div>
   )

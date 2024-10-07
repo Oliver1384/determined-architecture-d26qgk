@@ -35,10 +35,10 @@ export const List = ({ tasks, onUpdateTasks }: ListTasksProps) => {
   };
 
   return (
-    <div className={'todo-list'}>
-      <span className={'todo-list-title'}>Things to do:</span>
+    <div className={'list'}>
+      <span className={'list-title'}>Things to do:</span>
       {tasks.length ? (
-        <div className={'todo-list-content'}>
+        <div className={'list-content'}>
           {tasks.map((taskItem) => (
             <Checkbox
               key={taskItem.id}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TodoForm } from "./components/todo-form/todo-form";
 import { TodoList } from "./components/todo-list";
 import { TodoResults } from "./components/todo-results";
@@ -46,6 +46,11 @@ const tasksExample: Task[] = [
 
 export const App = (): JSX.Element => {
   const [tasks, setTasks] = useState(tasksExample);
+  const [totalTasks, setTotalTasks] = useState(0)
+
+  useEffect(() => {
+    setTotalTasks(tasks.filter(tasks => tasks.checked).length)
+  }, [tasks, setTotalTasks])
 
   const handleOnAddTask = (task: string): void => {
     setTasks((prevState: Task[]) => {
@@ -66,7 +71,7 @@ export const App = (): JSX.Element => {
     <div className={'root'}>
       <TasksContext.Provider value={{ tasksExample }}>
         <TodoList tasks={tasks} onUpdateTasks={handleUpdateTasks} />
-        <TodoResults />
+        <TodoResults totalTaskChecked={totalTasks}/>
         <TodoForm onAddTask={handleOnAddTask} />
       </TasksContext.Provider>
     </div>

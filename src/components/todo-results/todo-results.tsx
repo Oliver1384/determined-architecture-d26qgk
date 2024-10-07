@@ -1,15 +1,15 @@
-import * as React from "react";
-import "./todo-results.scss";
+import "./todo-results.scss"
 
-export const TodoResults = () => {
-  const calculateChecked = () => {
-    // Fix an ability to calculate completed tasks
-  };
+interface TodoResults {
+  totalTaskChecked: number
+}
+
+export const TodoResults = ({ totalTaskChecked }: TodoResults) => {
 
   return (
     <div className="todo-results">
-      Done:
+      {`Done: ${totalTaskChecked}`}
     </div>
-  );
+  )
 }
 

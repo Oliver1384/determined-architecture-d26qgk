@@ -14,6 +14,12 @@ export const Form = ({ onAddTask }: FormProps) => {
     }
   };
 
+  const handleOnClick = () => {
+    if (task) {
+      onAddTask(task)
+    }
+  }
+
   return (
     <div className={'todo-form'}>
       <input
@@ -25,11 +31,7 @@ export const Form = ({ onAddTask }: FormProps) => {
       <button
         disabled={!task}
         type={'button'}
-        onClick={() => {
-          if (task) {
-            onAddTask(task)
-          }
-        }}>
+        onClick={handleOnClick}>
         Add task
       </button>
     </div>

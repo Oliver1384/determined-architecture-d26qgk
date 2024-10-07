@@ -58,10 +58,14 @@ export const App = (): JSX.Element => {
     })
   }
 
+  const handleUpdateTasks = (tasks: Task[]) => {
+    setTasks(tasks)
+  }
+
   return (
     <div className={'root'}>
       <TasksContext.Provider value={{ tasksExample }}>
-        <TodoList tasks={tasks}/>
+        <TodoList tasks={tasks} onUpdateTasks={handleUpdateTasks} />
         <TodoResults />
         <TodoForm onAddTask={handleOnAddTask} />
       </TasksContext.Provider>

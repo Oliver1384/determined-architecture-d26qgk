@@ -5,17 +5,26 @@ import "./todo-list.scss";
 
 interface TodoListTasks {
   tasks: Task[]
+  onUpdateTasks: (tasks: Task[]) => void
 }
 
-export const TodoList = ({ tasks }: TodoListTasks) => {
-
-
+export const TodoList = ({ tasks, onUpdateTasks }: TodoListTasks) => {
   const handleDelete = (id: number) => {
-    // Fix an ability to delete task
+    const currentTasks = tasks.filter(tasks => tasks.id !== id)
+    onUpdateTasks(currentTasks)
   };
 
   const toggleCheck = (id: number) => {
-    // Fix an ability to toggle task
+    const currentTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          checked: !task.checked
+        }
+      }
+      return task
+    })
+    onUpdateTasks(currentTasks)
   };
 
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>, id: number) => {

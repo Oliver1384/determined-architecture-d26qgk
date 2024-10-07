@@ -23,10 +23,12 @@ export const TodoForm = ({ onAddTask }: TodoFormProps) => {
         onKeyUp={handleKeyUp}
       />
       <button
-        disabled={!!task}
+        disabled={!task}
         type={'button'}
         onClick={() => {
-          task && onAddTask(task)
+          if (task) {
+            onAddTask(task)
+          }
         }}>
         Add task
       </button>

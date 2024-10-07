@@ -1,2 +1,6 @@
 # determined-architecture-d26qgk
-Created with CodeSandbox
+
+##Completed TODOs:
+-   Fix app.tsx component errors
+-   Configure typescript
+-   Install sass module

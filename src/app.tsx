@@ -1,8 +1,8 @@
-import React, {useState} from "react";
-import { TodoForm } from "./components/todo-form";
+import { useState } from "react";
+import { TodoForm } from "./components/todo-form/todo-form";
 import { TodoList } from "./components/todo-list";
 import { TodoResults } from "./components/todo-results";
-import { TodosContext } from "./todo-context";
+import { TasksContext } from "./todo-context";
 import "./index.scss";
 
 export interface Task {
@@ -44,21 +44,27 @@ const tasksExample: Task[] = [
   },
 ];
 
-export const App = () => {
+export const App = (): JSX.Element => {
   const [tasks, setTasks] = useState(tasksExample);
-  
-  const handleOnAddTask = (newTask: Task): void => {
+
+  const handleOnAddTask = (task: string): void => {
     setTasks((prevState: Task[]) => {
-    return [...prevState, newTask] 
-  })
+      const newTask = {
+        id: prevState.length,
+        label: task,
+        checked: false
+      }
+      return [...prevState, newTask]
+    })
+  }
 
   return (
     <div className={'root'}>
-      <TodosContext.Provider value={{ todos: tasks }}>
-        <TodoList />
+      <TasksContext.Provider value={{ tasksExample }}>
+        <TodoList tasks={tasks}/>
         <TodoResults />
-        <TodoForm onAddTask={handleOnAddTask}/>
-      </TodosContext.Provider>
+        <TodoForm onAddTask={handleOnAddTask} />
+      </TasksContext.Provider>
     </div>
   )
 }

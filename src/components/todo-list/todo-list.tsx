@@ -1,20 +1,24 @@
-import * as React from "react";
+import { KeyboardEvent } from "react";
+import { Task } from "../../app";
 import { Checkbox } from "../checkbox";
-import { TodosContext } from "../../todo-context";
 import "./todo-list.scss";
 
-export const TodoList = () => {
-  const { todos, setTodos } = React.useContext(TodosContext);
+interface TodoListTasks {
+  tasks: Task[]
+}
 
-  const handleDelete = (id) => {
+export const TodoList = ({ tasks }: TodoListTasks) => {
+
+
+  const handleDelete = (id: number) => {
     // Fix an ability to delete task
   };
 
-  const toggleCheck = (id) => {
+  const toggleCheck = (id: number) => {
     // Fix an ability to toggle task
   };
 
-  const handleKeyUp = (e, id) => {
+  const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>, id: number) => {
     if (e.keyCode === 13) {
       toggleCheck(id);
     }
@@ -23,16 +27,18 @@ export const TodoList = () => {
   return (
     <div className="todo-list">
       <span className="todo-list-title">Things to do:</span>
-      {todos.length ? (
+      {tasks.length ? (
         <div className="todo-list-content">
-          {todos.map((todoItem) => (
+          {tasks.map((taskItem) => (
             <Checkbox
-              key={todoItem.id}
-              label={todoItem.label}
-              checked={todoItem.checked}
-              onClick={() => toggleCheck(todoItem.id)}
-              onKeyUp={(e) => handleKeyUp(e, todoItem.id)}
-              onDelete={() => handleDelete(todoItem.id)}
+              key={taskItem.id}
+              label={taskItem.label}
+              checked={taskItem.checked}
+              onClick={() => toggleCheck(taskItem.id)}
+              onKeyUp={
+                (e: KeyboardEvent<HTMLInputElement>) => handleKeyUp(e, taskItem.id)
+              }
+              onDelete={() => handleDelete(taskItem.id)}
             />
           ))}
         </div>

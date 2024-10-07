@@ -9,7 +9,7 @@ export const TodoResults = () => {
   return (
     <div className="todo-results">
       Done:
-      {calculateChecked()}
     </div>
   );
-};
+}
+

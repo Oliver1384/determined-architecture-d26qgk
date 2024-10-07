@@ -1,10 +1,18 @@
-import * as React from "react";
+import { KeyboardEvent } from "react";
 import "./checkbox.scss";
 
-export const Checkbox = ({ onClick, checked, onDelete, label, onKeyUp }) => (
+interface CheckboxProps {
+  onClick: () => void
+  checked: boolean
+  onDelete: () => void
+  label: string
+  onKeyUp: (event: KeyboardEvent<HTMLInputElement>) => void
+}
+
+export const Checkbox = ({ onClick, checked, onDelete, label, onKeyUp }: CheckboxProps) => (
   <div className="checkbox">
     <div
-      tabIndex="0"
+      tabIndex={0}
       role="checkbox"
       aria-checked
       className="checkbox-content"
@@ -12,7 +20,7 @@ export const Checkbox = ({ onClick, checked, onDelete, label, onKeyUp }) => (
       onKeyUp={onKeyUp}
     >
       <input
-        tabIndex="-1"
+        tabIndex={-1}
         type="checkbox"
         checked={checked}
         onChange={onClick}

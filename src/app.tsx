@@ -46,7 +46,7 @@ const tasksExample: Task[] = [
 ];
 
 export const App = () => {
-  const [tasks, setTasks] = useState(tasksExample);
+  const [tasks, setTasks] = useState(tasksExample)
   const [totalTasksDone, setTotalTasksDone] = useState(0)
 
   useEffect(() => {

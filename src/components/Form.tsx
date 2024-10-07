@@ -10,7 +10,7 @@ export const Form = ({ onAddTask }: FormProps) => {
 
   const handleKeyUp = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter' && task) {
-      onAddTask(task);
+      onAddTask(task)
     }
   };
 

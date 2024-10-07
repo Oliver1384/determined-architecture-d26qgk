@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState} from "react";
 import { TodoForm } from "./components/todo-form";
 import { TodoList } from "./components/todo-list";
 import { TodoResults } from "./components/todo-results";
@@ -11,7 +11,7 @@ export interface Task {
   checked: boolean;
 }
 
-const todosTemplate: Todo[] = [
+const tasksExample: Task[] = [
   {
     id: 0,
     label: "Fix an ability to display all tasks",
@@ -45,15 +45,20 @@ const todosTemplate: Todo[] = [
 ];
 
 export const App = () => {
-  const [todos, setTodos] = React.useState(to);
+  const [tasks, setTasks] = useState(tasksExample);
+  
+  const handleOnAddTask = (newTask: Task): void => {
+    setTasks((prevState: Task[]) => {
+    return [...prevState, newTask] 
+  })
 
   return (
-    <div className="root">
-      <TodosContext.Provider value={{ todos }}>
+    <div className={'root'}>
+      <TodosContext.Provider value={{ todos: tasks }}>
         <TodoList />
         <TodoResults />
-        <TodoForm />
+        <TodoForm onAddTask={handleOnAddTask}/>
       </TodosContext.Provider>
     </div>
-  );
-};
+  )
+}
